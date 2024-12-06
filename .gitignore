@@ -9,6 +9,9 @@
 *~
 .*.sw[p-z]
 
+# generated tf files
+_*.tf
+
 # macos
 .DS_Store
 .VolumeIcon.icns

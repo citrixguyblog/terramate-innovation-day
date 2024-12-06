@@ -2,10 +2,11 @@ generate_hcl "_backend.tf" {
   content {
     terraform {
       backend "azurerm" {
-        resource_group_name  = global.backend.resource_group_name
-        storage_account_name = global.backend.storage_account_name
-        container_name      = global.backend.container_name
-        key                = "${terramate.stack.path}/terraform.tfstate"
+        storage_account_name = "stterramatewedev001"
+        resource_group_name  = "rg-terramate-we-test-001"
+        container_name       = "terramate-dev"
+        location             = "westeurope"
+        subscription_id      = "70f0d042-bb3d-490b-8498-964903cd415a"
       }
     }
   }

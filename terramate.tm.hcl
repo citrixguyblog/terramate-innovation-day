@@ -4,5 +4,10 @@ terramate {
     cloud {
       organization = "mrazureinc"
     }
+    run {
+      env {
+        environment = env.ENVIRONMENT
+      }
+    }
   }
 }
