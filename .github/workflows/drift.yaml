@@ -44,10 +44,39 @@ jobs:
         id: init
         run: terramate run -- terraform init
 
-      - name: Run drift detection
+      - name: Run drift detection dev
         id: drift
         run: |
           terramate run \
+          --env dev \
+          --sync-drift-status \
+          --terraform-plan-file=drift.tfplan \
+          --continue-on-error \
+          --parallel 5 \
+          -- \
+          terraform plan -out drift.tfplan -detailed-exitcode -lock=false
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Run drift detection dev
+        id: drift
+        run: |
+          terramate run \
+          --env dev \
+          --sync-drift-status \
+          --terraform-plan-file=drift.tfplan \
+          --continue-on-error \
+          --parallel 5 \
+          -- \
+          terraform plan -out drift.tfplan -detailed-exitcode -lock=false
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Run drift detection prod
+        id: drift
+        run: |
+          terramate run \
+          --env prod \
           --sync-drift-status \
           --terraform-plan-file=drift.tfplan \
           --continue-on-error \

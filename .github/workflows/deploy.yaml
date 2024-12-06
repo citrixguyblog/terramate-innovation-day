@@ -9,7 +9,7 @@ on:
         required: false
         default: 'Manual build'
         type: string
-        
+
 jobs:
   deploy:
     name: Deploy Terraform changes in changed Terramate stacks
@@ -54,6 +54,7 @@ jobs:
         id: init
         run: |
           terramate run \
+            --env ${{ github.event.inputs.environment }} \
             --changed \
             -- \
             terraform init
@@ -63,6 +64,7 @@ jobs:
         id: plan
         run: |
           terramate run \
+            --env ${{ github.event.inputs.environment }} \
             --changed \
             -- \
             terraform plan -lock-timeout=5m -out out.tfplan
@@ -72,6 +74,7 @@ jobs:
         id: apply
         run: |
           terramate run \
+            --env ${{ github.event.inputs.environment }} \
             --changed \
             --sync-deployment \
             --terraform-plan-file=out.tfplan \
@@ -85,6 +88,7 @@ jobs:
         id: drift
         run: |
           terramate run \
+            --env ${{ github.event.inputs.environment }} \
             --changed \
             --sync-drift-status \
             --terraform-plan-file=drift.tfplan \
