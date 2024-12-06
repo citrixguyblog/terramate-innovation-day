@@ -9,10 +9,20 @@ on:
         required: false
         default: 'Manual build'
         type: string
+      environment:
+        description: 'Environment to run workflow against'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+
 
 jobs:
   deploy:
-    environment: dev 
+    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'dev' }}
     name: Deploy Terraform changes in changed Terramate stacks
 
     permissions:
