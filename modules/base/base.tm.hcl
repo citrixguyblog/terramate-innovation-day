@@ -1,3 +1,8 @@
+globals {
+  client_name = "xebia"
+  stack       = "base"
+}
+
 stack {
   name        = "baseline"
   description = "The baseline configuration of the Azure Landing Zone."
