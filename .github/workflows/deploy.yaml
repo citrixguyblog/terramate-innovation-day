@@ -12,6 +12,7 @@ on:
 
 jobs:
   deploy:
+    environment: dev 
     name: Deploy Terraform changes in changed Terramate stacks
 
     permissions:
