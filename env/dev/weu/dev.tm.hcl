@@ -1,7 +1,7 @@
 globals "backend" {
-  storage_account_name = "tfstatedev123"
-  resource_group_name  = "tfstate-dev-rg"
-  container_name      = "tfstate"
-  location           = "westeurope"
-  subscription_id    = "27e474a0-381c-4785-9c7e-b8faf95dc64c"
+  storage_account_name = "stterramatewedev001"
+  resource_group_name  = "rg-terramate-we-test-001"
+  container_name       = "terramate-dev"
+  location             = "westeurope"
+  subscription_id      = "70f0d042-bb3d-490b-8498-964903cd415a"
 }
