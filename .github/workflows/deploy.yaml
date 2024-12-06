@@ -9,6 +9,11 @@ on:
         required: false
         default: 'Manual build'
         type: string
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        type: string
+        default: 'dev'
 
 jobs:
   deploy:
